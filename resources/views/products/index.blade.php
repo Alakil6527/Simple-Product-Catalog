@@ -10,24 +10,26 @@
         <h1>Product Catalog</h1>
         <a href="{{ route('cart.show') }}" class="btn btn-success mb-3">View Cart</a> 
 
-        <div class="row">
+        <input type="text" id="search" class="form-control mb-3" placeholder="Search products...">
+
+        <div class="d-flex flex-wrap gap-3" id="product-container">
             @foreach ($products as $product)
-                <div class="col-md-3">
-                    <div class="card p-3 mb-3">
-                        <h5>{{ $product['name'] }}</h5>
-                        <p>Price: ${{ $product['price'] }}</p>
-                        <button class="btn btn-primary add-to-cart" 
-                                data-id="{{ $product['id'] }}" 
-                                data-name="{{ $product['name'] }}" 
-                                data-price="{{ $product['price'] }}">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
+            <div class="product-card card p-3 mb-3" style="width: 18rem;">
+                <h5>{{ $product['name'] }}</h5>
+                <p>Price: ${{ $product['price'] }}</p>
+                <button class="btn btn-primary add-to-cart" 
+                        data-id="{{ $product['id'] }}" 
+                        data-name="{{ $product['name'] }}" 
+                        data-price="{{ $product['price'] }}">
+                    Add to Cart
+                </button>
+            </div>
             @endforeach
         </div>
     </div>
 
     <script src="{{ asset('js/cart.js') }}"></script>
+    <script src="{{ asset('js/search.js') }}"></script>
+
 </body>
 </html>
